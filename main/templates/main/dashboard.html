@@ -1,0 +1,40 @@
+<!-- templates/dashboard.html -->
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Финансовый трекер{% endblock %}
+
+{% block content %}
+    {% if request.user.is_authenticated %}
+        <h2>Добро пожаловать, {{request.user.username}}!</h2>
+    {% else %}
+        <h2>Добро пожаловать!</h2>
+    {% endif %}
+
+
+    <div class="card mb-4">
+        <div class="card-body">
+            <h3>Текущий баланс: <strong>{{ balance }} ₽</strong></h3>
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <a href="{% url 'main:add_transactions' %}" class="btn btn-success">Добавить транзакцию</a>
+        
+    </div>
+
+    <div>
+        <a href="{% url 'main:add_category' %}" class="btn btn-success">Добавить новую категорию</a>
+    </div>
+
+
+{% endblock %}
+
+{% block footer %}
+<footer class="bg-light text-center text-muted py-3 mt-4" style="position: fixed; bottom: 0; width: 100%;">
+    <div class="container">
+        <p class="m-0 text-center text-black">&copy;2025 Финансовый трекер</p>
+    </div>
+</footer>
+
+{% endblock  %}

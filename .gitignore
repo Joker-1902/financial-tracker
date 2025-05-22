@@ -1,0 +1,39 @@
+# Виртуальное окружение
+.venv/
+
+# Кэши Python
+__pycache__/
+*.pyc
+
+# Файлы IDE и ОС
+.vscode/
+.DS_Store
+Thumbs.db
+*.iml
+*.sublime-project
+*.sublime-workspace
+
+# Конфиденциальные данные
+.env
+
+# Файлы базы данных
+db.sqlite3
+
+# Сгенерированные медиа-файлы и статические файлы
+media/
+static_collected/
+staticfiles/
+
+# Логи
+logs/
+*.log
+
+# Компилированные файлы миграций
+*/migrations/*.pyc
+*/migrations/__pycache__/
+
+# Временные файлы и бэкапы
+*~
+#*#
+*.bak
+*.swp
