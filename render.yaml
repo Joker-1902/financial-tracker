@@ -1,0 +1,23 @@
+databases:
+  - name: financial_tracker_db # Имя вашей базы данных на Render
+    plan: free # Или другой план, если нужен
+    databaseName: financial_tracker_db # Имя базы данных, которое будет использоваться в Django
+    user: financial_tracker_user # Имя пользователя БД
+
+services:
+  - type: web
+    name: financial-tracker-app # Имя вашего веб-сервиса на Render
+    runtime: python
+    buildCommand: "./build.sh" # Скрипт для сборки
+    startCommand: "gunicorn finance_tracker.wsgi:application --bind 0.0.0.0:$PORT"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: financial_tracker_db
+          property: connectionString
+      - key: SECRET_KEY
+        generateValue: true # Render сгенерирует секретный ключ
+      - key: WEB_CONCURRENCY # Количество рабочих процессов Gunicorn
+        value: 4 # Или другое значение, зависит от вашего плана
+      - key: DISABLE_COLLECTSTATIC # Отключите collectstatic на Render, если вы собираете статику вручную
+        value: 0 # Установите в 1, если не хотите запускать collectstatic автоматически. Обычно 0
