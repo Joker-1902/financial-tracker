@@ -11,7 +11,7 @@ Financial Tracker is my personal pet project designed for easily adding and cont
 1. **Clone the repository**
     ```bash
     git clone [https://github.com/your_username/name_of_repository.git](https://github.com/your_username/name_of_repository.git)
-    cd название_репозитория
+    cd name_of_repository
     ```
 2. **Create and activate virtual environment**
     ```bash
